@@ -12,9 +12,4 @@ export default {
       exclude: 'node_modules/**'
     })
   ],
-  globals: {
-    react: 'React',
-    'prop-types': 'PropTypes',
-  },
-  external: ['react', 'prop-types'],
 };
