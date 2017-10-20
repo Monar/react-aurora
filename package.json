@@ -1,6 +1,6 @@
 {
   "name": "react-aurora",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Draw your popups, modals, context menus, tooltips in document 'atmosphere'",
   "main": "./lib/react-aurora.js",
   "scripts": {
