@@ -9,7 +9,7 @@ class Aurora extends ImmutablePureComponent {
       ImmutablePropTypes.mapContains({
         id: PropTypes.string.isRequired,
         justOne: PropTypes.bool,
-      })
+      }),
     ),
     onClose: PropTypes.func,
     overlay: PropTypes.bool,
@@ -43,29 +43,30 @@ class Aurora extends ImmutablePureComponent {
 
   getOverlay = (zIndexOffset, node) => {
     const { overlayColor, overlay, zIndex } = this.props;
-    return overlay &&
-      <Overlay
-        key="overlay"
-        color={overlayColor}
-        onClose={(event) => this.handleOnClose(event, node.get('id'))}
-        zIndex={zIndex + zIndexOffset}
-      />;
+    return (
+      overlay && (
+        <Overlay
+          key="overlay"
+          color={overlayColor}
+          onClose={event => this.handleOnClose(event, node.get('id'))}
+          zIndex={zIndex + zIndexOffset}
+        />
+      )
+    );
   };
 
   render() {
     const { elements } = this.props;
-    const regural = elements
-      .filter(e => !e.get('justOne', false));
+    const regural = elements.filter(e => !e.get('justOne', false));
 
-    const justOne = elements
-      .filter(e => e.get('justOne', false))
-      .last() || false;
+    const justOne =
+      elements.filter(e => e.get('justOne', false)).last() || false;
 
     return [
       ...regural.map(this.createElement),
       this.getOverlay(regural.size, justOne),
-      justOne && this.createElement(justOne, regural.size + 1)
-    ]
+      justOne && this.createElement(justOne, regural.size + 1),
+    ];
   }
 }
 
@@ -81,7 +82,7 @@ class Element extends React.Component {
     onClose: PropTypes.func,
   };
 
-  getStyle = (data) => ({
+  getStyle = data => ({
     position: 'fixed',
     zIndex: this.props.zIndex,
     top: `calc(50vh - ${data.get('height')}px / 2)`,
@@ -95,10 +96,16 @@ class Element extends React.Component {
   };
 
   render() {
-    const { onClose, data } = this.props;
+    const { data } = this.props;
     return (
-      <div key={data.get('id')} style={this.getStyle(data)} onClick={blockEvent}>
-        {React.cloneElement(data.get('component'), { onClose: this.handleClose })}
+      <div
+        key={data.get('id')}
+        style={this.getStyle(data)}
+        onClick={blockEvent}
+      >
+        {React.cloneElement(data.get('component'), {
+          onClose: this.handleClose,
+        })}
       </div>
     );
   }
