@@ -1,6 +1,6 @@
 {
   "name": "react-aurora",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Draw your popups, modals, context menus, tooltips in document 'atmosphere'",
   "main": "./lib/react-aurora.js",
   "scripts": {
@@ -30,17 +30,15 @@
   },
   "homepage": "https://github.com/Monar/react-aurora#readme",
   "peerDependencies": {
-    "immutable": "^3",
     "prop-types": "^15",
-    "react": "^16",
-    "react-immutable-proptypes": "^2",
-    "react-immutable-pure-component": "^1"
+    "react": "^16"
   },
   "devDependencies": {
     "babel-core": "6.26.0",
     "babel-eslint": "8.0.1",
     "babel-jest": "21.2.0",
     "babel-plugin-transform-class-properties": "6.24.1",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-preset-react": "6.24.1",
     "eslint": "4.8.0",
     "eslint-config-prettier": "2.6.0",
@@ -49,15 +47,12 @@
     "eslint-plugin-jsx-a11y": "6.0.2",
     "eslint-plugin-prettier": "2.3.1",
     "eslint-plugin-react": "7.4.0",
-    "immutable": "3.8.2",
     "jest": "21.2.1",
     "jest-cli": "21.2.1",
     "prettier": "1.7.4",
     "prop-types": "15.6.0",
     "react": "16.0.0",
     "react-dom": "16.0.0",
-    "react-immutable-proptypes": "2.1.0",
-    "react-immutable-pure-component": "1.1.0",
     "rollup": "0.50.0",
     "rollup-plugin-babel": "3.0.2"
   },
@@ -79,7 +74,8 @@
       "react"
     ],
     "plugins": [
-      "transform-class-properties"
+      "transform-class-properties",
+      "transform-object-rest-spread"
     ]
   }
 }
