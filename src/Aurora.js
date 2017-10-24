@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 
 import { Element } from './Element';
 
-export class Aurora extends React.PureComponent {
+export class Aurora extends React.Component {
   static propTypes = {
     elements: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
-      }),
+      }).isRequired,
     ),
     overlayColor: PropTypes.string,
     onClose: PropTypes.func,
@@ -18,6 +18,18 @@ export class Aurora extends React.PureComponent {
   static defaultProps = {
     overlayColor: 'rgba(0,0,0,0.5)',
     zIndex: 1000,
+  };
+
+  componentDidMount() {
+    window.addEventListener('resize', this.update);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.update);
+  }
+
+  update = () => {
+    this.forceUpdate();
   };
 
   handleOnClose = id => {
