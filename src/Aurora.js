@@ -20,13 +20,10 @@ export class Aurora extends React.PureComponent {
     zIndex: 1000,
   };
 
-  handleOnClose = (event, id) => {
-    event.preventDefault();
-    event.stopPropagation();
+  handleOnClose = id => {
     if (this.props.onClose) {
       this.props.onClose(id);
     }
-    return false;
   };
 
   createElement = (element, index) => (

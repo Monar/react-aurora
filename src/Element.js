@@ -27,8 +27,16 @@ export class Element extends React.PureComponent {
     height: data.height,
   });
 
-  handleClose = event => {
-    this.props.onClose(event, this.props.data.id);
+  handleClose = () => {
+    this.props.onClose(this.props.data.id);
+  };
+
+  handleOverlayClick = event => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    this.props.onClose(this.props.data.id);
+    return false;
   };
 
   getOverlay = () => {
@@ -40,7 +48,7 @@ export class Element extends React.PureComponent {
         key={`overlay: ${id}`}
         color={overlayColor || this.props.overlayColor}
         zIndex={zIndex}
-        onClick={this.handleClose}
+        onClick={this.handleOverlayClick}
       />
     );
   };
@@ -50,7 +58,7 @@ export class Element extends React.PureComponent {
     const { id, component: Component, props = {} } = data;
     return [
       this.getOverlay(),
-      <div key={id} style={this.getStyle(data)} onClick={blockEvent}>
+      <div key={id} style={this.getStyle(data)}>
         <Component {...props} onClose={this.handleClose} />
       </div>,
     ];
@@ -72,9 +80,3 @@ const Overlay = ({ onClick, color, zIndex }) => (
   />
 );
 Overlay.displayName = 'AuroraElementOverlay';
-
-function blockEvent(event) {
-  event.preventDefault();
-  event.stopPropagation();
-  return false;
-}
