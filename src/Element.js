@@ -13,7 +13,9 @@ export class Element extends React.PureComponent {
           x: PropTypes.number.isRequired,
           y: PropTypes.number.isRequired,
         }),
-        PropTypes.element.isRequired,
+        PropTypes.shape({
+          getBoundingClientRect: PropTypes.func.isRequired,
+        }),
       ]),
 
       refLinkPoint: PropTypes.shape({
@@ -28,7 +30,8 @@ export class Element extends React.PureComponent {
       width: PropTypes.number,
       height: PropTypes.number,
 
-      component: PropTypes.node.isRequired,
+      component: PropTypes.oneOfType([PropTypes.node, PropTypes.func])
+        .isRequired,
       props: PropTypes.object,
       sticky: PropTypes.bool,
       overlay: PropTypes.bool,
