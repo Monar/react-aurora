@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { calcPosition, blockEvent } from './utils';
+import { calcPosition } from './utils';
 
 export class Element extends React.PureComponent {
   static propTypes = {
@@ -168,7 +168,6 @@ export class Element extends React.PureComponent {
       <div
         key={id}
         ref={this.setRef}
-        onMouseDown={blockEvent}
         style={this.getStyle(data)}
       >
         <Component {...props} onClose={this.handleClose} />
