@@ -1,3 +1,8 @@
+export function blockEvent(event) {
+  event.stopPropagation();
+  return false;
+}
+
 export function calcPosition(args) {
   const { refRect, width, height } = args;
   const { refLinkPoint, linkPoint } = args;
