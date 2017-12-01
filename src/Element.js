@@ -69,7 +69,7 @@ export class Element extends React.PureComponent {
     }
   }
 
-  comopnentWillUnmount() {
+  componentWillUnmount() {
     window.removeEventListener('mousedown', this.handleClose);
     window.removeEventListener('wheel', this.handleClose);
   }
