@@ -12,10 +12,10 @@ export class Element extends React.PureComponent {
         PropTypes.shape({
           x: PropTypes.number.isRequired,
           y: PropTypes.number.isRequired,
+          width: PropTypes.number,
+          height: PropTypes.number,
         }),
-        PropTypes.shape({
-          getBoundingClientRect: PropTypes.func.isRequired,
-        }),
+        PropTypes.func.isRequired,
       ]),
 
       refLinkPoint: PropTypes.shape({
@@ -94,12 +94,18 @@ export class Element extends React.PureComponent {
       };
     }
 
-    if (ref.x && ref.y) {
-      return { x: ref.x, y: ref.y, width: 0, height: 0 };
+    if (typeof ref === 'function') {
+      const node = ref();
+      const { x, y, width, height } = node.getBoundingClientRect();
+      return { x, y, width, height };
     }
 
-    const { x, y, width, height } = ref.getBoundingClientRect();
-    return { x, y, width, height };
+    return {
+      x: ref.x,
+      y: ref.y,
+      width: ref.width || 0,
+      height: ref.height || 0,
+    };
   };
 
   getStyle = () => {
