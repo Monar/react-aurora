@@ -8,15 +8,12 @@ export class Element extends React.PureComponent {
     data: PropTypes.shape({
       id: PropTypes.string.isRequired,
 
-      ref: PropTypes.oneOfType([
-        PropTypes.shape({
-          x: PropTypes.number.isRequired,
-          y: PropTypes.number.isRequired,
-          width: PropTypes.number,
-          height: PropTypes.number,
-        }),
-        PropTypes.func.isRequired,
-      ]),
+      ref: PropTypes.shape({
+        x: PropTypes.number.isRequired,
+        y: PropTypes.number.isRequired,
+        width: PropTypes.number,
+        height: PropTypes.number,
+      }),
 
       refLinkPoint: PropTypes.shape({
         x: PropTypes.oneOf(['left', 'right', 'center']),
@@ -92,12 +89,6 @@ export class Element extends React.PureComponent {
         width: window.innerWidth,
         height: window.innerHeight,
       };
-    }
-
-    if (typeof ref === 'function') {
-      const node = ref();
-      const { x, y, width, height } = node.getBoundingClientRect();
-      return { x, y, width, height };
     }
 
     return {
