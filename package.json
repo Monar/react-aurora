@@ -35,6 +35,7 @@
   "devDependencies": {
     "babel-core": "6.26.0",
     "babel-eslint": "8.2.1",
+    "babel-plugin-external-helpers": "6.22.0",
     "babel-plugin-transform-class-properties": "6.24.1",
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-preset-react": "6.24.1",
@@ -50,7 +51,8 @@
     "react": "16.2.0",
     "react-dom": "16.2.0",
     "rollup": "0.55.1",
-    "rollup-plugin-babel": "3.0.3"
+    "rollup-plugin-babel": "3.0.3",
+    "rollup-plugin-node-resolve": "3.0.2"
   },
   "babel": {
     "presets": [
@@ -58,7 +60,8 @@
     ],
     "plugins": [
       "transform-class-properties",
-      "transform-object-rest-spread"
+      "transform-object-rest-spread",
+      "external-helpers"
     ]
   }
 }

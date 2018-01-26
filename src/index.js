@@ -1,3 +1,4 @@
-import { Aurora } from './Aurora';
+import { Aurora, AuroraRemote } from './Aurora';
+import modifiers from './modifiers';
 
-export default Aurora;
+export { Aurora, AuroraRemote, modifiers };
