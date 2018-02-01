@@ -16,12 +16,5 @@ export function getFixed(options = {}) {
 }
 
 export function getAuto() {
-  return data => {
-    if (!data.state.mount) {
-      return data;
-    }
-
-    const { width, height } = data.state;
-    return mergeStyles(data, { width, height });
-  };
+  return data => mergeStyles(data, { width: 'auto', height: 'auto' });
 }
