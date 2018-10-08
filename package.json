@@ -2,10 +2,17 @@
   "name": "react-aurora",
   "version": "0.1.1",
   "description": "Draw your popups, modals, context menus, tooltips in document 'atmosphere'",
-  "main": "./lib/react-aurora.js",
+  "main": "lib/react-aurora.js",
+  "main": "lib/react-aurora.cjs.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "build": "rollup -c",
-    "lint": "eslint --fix ."
+    "lint": "eslint --fix .",
+    "test": "jest",
+    "build:es5": "rollup -c ./rollup.config/es5.js",
+    "build:es6": "rollup -c ./rollup.config/es6.js"
   },
   "repository": {
     "type": "git",
@@ -33,35 +40,34 @@
     "react": "^16"
   },
   "devDependencies": {
-    "babel-core": "6.26.0",
-    "babel-eslint": "8.2.1",
-    "babel-plugin-external-helpers": "6.22.0",
-    "babel-plugin-transform-class-properties": "6.24.1",
-    "babel-plugin-transform-object-rest-spread": "6.26.0",
-    "babel-preset-react": "6.24.1",
-    "eslint": "4.16.0",
-    "eslint-config-prettier": "2.9.0",
-    "eslint-plugin-class-property": "1.1.0",
-    "eslint-plugin-import": "2.8.0",
-    "eslint-plugin-jsx-a11y": "6.0.3",
-    "eslint-plugin-prettier": "2.5.0",
-    "eslint-plugin-react": "7.6.0",
-    "prettier": "1.10.2",
-    "prop-types": "15.6.0",
-    "react": "16.2.0",
-    "react-dom": "16.2.0",
-    "rollup": "0.55.1",
-    "rollup-plugin-babel": "3.0.3",
-    "rollup-plugin-node-resolve": "3.0.2"
+    "@babel/core": "7.1.2",
+    "@babel/plugin-transform-modules-commonjs": "7.1.0",
+    "@babel/preset-env": "7.1.0",
+    "@babel/preset-react": "7.0.0",
+    "rollup": "0.66.4",
+    "rollup-plugin-babel": "4.0.3",
+    "babel-jest": "23.6.0",
+    "babel-core": "7.0.0-bridge.0",
+    "jest": "23.6.0",
+    "prop-types": "15.6.2",
+    "react": "16.5.2",
+    "react-dom": "16.5.2",
+    "react-test-renderer": "16.5.2",
+    "regenerator-runtime": "0.12.1",
+    "rollup-plugin-node-resolve": "3.4.0"
   },
   "babel": {
     "presets": [
       "react"
     ],
+    "env": {
+      "test": {
+        "presets": [ [ "env" ], "react" ]
+      }
+    },
     "plugins": [
       "transform-class-properties",
-      "transform-object-rest-spread",
-      "external-helpers"
+      "transform-object-rest-spread"
     ]
   }
 }

@@ -15,6 +15,7 @@ export default {
   external: ['react', 'prop-types'],
   plugins: [
     babel({
+      plugins: ['external-helpers'],
       exclude: 'node_modules/**',
     }),
     resolve({

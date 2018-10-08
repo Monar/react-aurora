@@ -61,6 +61,7 @@ export class ElementWrapper extends React.PureComponent {
     };
 
     const { style, wrapper } = this.props.modifier(data);
+    console.info('element wrapper render', data.id);
     return wrapper(this.getComponent(style));
   }
 }
